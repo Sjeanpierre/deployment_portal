@@ -1,0 +1,124 @@
+.inline-block {
+  display: inline-block; }
+  .lt-ie8 .inline-block {
+    display: inline;
+    zoom: 1; }
+
+/* For modern browsers */
+.cf:before,
+.cf:after {
+  content: "";
+  display: table; }
+
+.cf:after {
+  clear: both; }
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+  zoom: 1; }
+
+.UIButton input.primary,
+.button.primary,
+.button.primary:visited,
+.button.primary:active {
+  border: 1px solid;
+  display: inline-block;
+  font-weight: bold;
+  color: white;
+  padding: 6px 20px;
+  text-decoration: none;
+  border: 2px solid #FFFFFF !important;
+  color: white;
+  font-family: Verdana,Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none; }
+  .borderradius .UIButton input.primary, .borderradius
+  .button.primary, .borderradius
+  .button.primary:visited, .borderradius
+  .button.primary:active {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px; }
+  .no-cssgradients .UIButton input.primary, .no-cssgradients
+  .button.primary, .no-cssgradients
+  .button.primary:visited, .no-cssgradients
+  .button.primary:active {
+    background: #a1c959; }
+  .cssgradients .UIButton input.primary, .cssgradients
+  .button.primary, .cssgradients
+  .button.primary:visited, .cssgradients
+  .button.primary:active {
+    background: -moz-linear-gradient(top, #b9d157, #89c15c);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b9d157), color-stop(100%, #89c15c));
+    background: -webkit-linear-gradient(top, #b9d157, #89c15c);
+    background: -o-linear-gradient(top, #b9d157, #89c15c);
+    background: -ms-linear-gradient(top, #b9d157, #89c15c);
+    background: linear-gradient(top, #b9d157, #89c15c); }
+  .boxshadow .UIButton input.primary, .boxshadow
+  .button.primary, .boxshadow
+  .button.primary:visited, .boxshadow
+  .button.primary:active {
+    -moz-box-shadow: 0 1px 3px #777777;
+    -webkit-box-shadow: 0 1px 3px #777777;
+    box-shadow: 0 1px 3px #777777; }
+
+.UIButton i {
+  display: none; }
+
+.UIButton input.primary:hover,
+.button.primary:hover {
+  color: white;
+  text-decoration: none;
+  border: 1px solid;
+  border-color: #365b0b; }
+  .no-cssgradients .UIButton input.primary:hover, .no-cssgradients
+  .button.primary:hover {
+    background: #6ea732; }
+  .cssgradients .UIButton input.primary:hover, .cssgradients
+  .button.primary:hover {
+    background: -moz-linear-gradient(top, #89b538, #54992d);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89b538), color-stop(100%, #54992d));
+    background: -webkit-linear-gradient(top, #89b538, #54992d);
+    background: -o-linear-gradient(top, #89b538, #54992d);
+    background: -ms-linear-gradient(top, #89b538, #54992d);
+    background: linear-gradient(top, #89b538, #54992d); }
+
+.UIButton input,
+.button,
+.button:visited,
+.button:active {
+  background-color: #FFFFFF;
+  border: 1px solid #BBBBBB !important;
+  color: #007F64;
+  border: 1px solid;
+  display: inline-block;
+  padding: 7px 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: Verdana,Arial,Helvetica,sans-serif;
+  text-decoration: none; }
+  .borderradius .UIButton input, .borderradius
+  .button, .borderradius
+  .button:visited, .borderradius
+  .button:active {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px; }
+
+.UIButton input:hover,
+.button:hover {
+  color: #555;
+  border-color: #888;
+  text-decoration: none; }
+  .no-cssgradients .UIButton input:hover, .no-cssgradients
+  .button:hover {
+    background: #f6f6f6; }
+  .cssgradients .UIButton input:hover, .cssgradients
+  .button:hover {
+    background: -moz-linear-gradient(top, white, #eeeeee);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #eeeeee));
+    background: -webkit-linear-gradient(top, white, #eeeeee);
+    background: -o-linear-gradient(top, white, #eeeeee);
+    background: -ms-linear-gradient(top, white, #eeeeee);
+    background: linear-gradient(top, white, #eeeeee); }

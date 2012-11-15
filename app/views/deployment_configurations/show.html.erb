@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag prefix:</b>
+  <%= @deployment_configuration.tag_prefix %>
+</p>
+
+<p>
+  <b>Deployment profile:</b>
+  <%= @deployment_configuration.deployment_profile_id %>
+</p>
+
+<p>
+  <b>Git repo name:</b>
+  <%= @deployment_configuration.git_repo_name %>
+</p>
+
+<p>
+  <b>Git org:</b>
+  <%= @deployment_configuration.git_org %>
+</p>
+
+<p>
+  <b>Rightscale array:</b>
+  <%= @deployment_configuration.rightscale_array_id %>
+</p>
+
+<p>
+  <b>Rightscale account:</b>
+  <%= @deployment_configuration.rightscale_account_id %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @deployment_configuration.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_deployment_configuration_path(@deployment_configuration) %> |
+<%= link_to 'Back', deployment_configurations_path %>

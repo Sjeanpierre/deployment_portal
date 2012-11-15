@@ -1,0 +1,29 @@
+<%= form_for(@deployment) do |f| %>
+  <% if @deployment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
+
+      <ul>
+      <% @deployment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :deployment_profile_id %><br />
+    <%= f.number_field :deployment_profile_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sha %><br />
+    <%= f.text_field :sha %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br />
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tag_prefix: MyString
+  deployment_profile_id: MyText
+  git_repo_name: MyText
+  git_org: MyText
+  rightscale_array_id: MyText
+  rightscale_account_id: MyText
+  created_at: 2012-11-14 14:48:02
+
+two:
+  tag_prefix: MyString
+  deployment_profile_id: MyText
+  git_repo_name: MyText
+  git_org: MyText
+  rightscale_array_id: MyText
+  rightscale_account_id: MyText
+  created_at: 2012-11-14 14:48:02

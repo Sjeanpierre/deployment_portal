@@ -1,0 +1,2 @@
+rails generate scaffold DeploymentConfiguration tag_prefix:string deployment_profile_id:string git_repo_name:string git_org:string rightscale_array_id:string rightscale_account_id:string created_at:timestamp
+#rails destory scaffold DeploymentConfiguration

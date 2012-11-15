@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :deployment_profile_id %><br />
-    <%= f.number_field :deployment_profile_id %>
+    <%= f.label :deployment_profile_id %>
   </div>
   <div class="field">
     <%= f.label :sha %><br />
-    <%= f.text_field :sha %>
+    <%= f.label :sha %>
   </div>
   <div class="field">
     <%= f.label :created_at %><br />
-    <%= f.datetime_select :created_at %>
+    <%= f.label Time.now.getutc %>
   </div>
   <div class="actions">
     <%= f.submit %>

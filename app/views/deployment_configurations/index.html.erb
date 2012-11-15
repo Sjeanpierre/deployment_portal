@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th></th>
+    <th>Deploy</th>
     <th>Tag prefix</th>
     <th>Deployment profile</th>
     <th>Git repo name</th>
@@ -17,7 +17,7 @@
 
 <% @deployment_configurations.each do |deployment_configuration| %>
   <tr>
-    <td><a href=""><img alt="Delete" src="/deploy.png" width="30" height="30" title="Deploy"/></a></td>
+    <td><%= link_to image_tag("/deploy.png"), new_deployment_path(deployment_configuration.deployment_profile_id) %></td>
     <td><%= deployment_configuration.tag_prefix %></td>
     <td><%= deployment_configuration.deployment_profile_id %></td>
     <td><%= deployment_configuration.git_repo_name %></td>
@@ -35,3 +35,4 @@
 <br />
 
 <%= link_to 'New Deployment configuration', new_deployment_configuration_path %>
+<%= link_to 'Back', "home/index" %>

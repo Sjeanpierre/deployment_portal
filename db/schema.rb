@@ -14,26 +14,26 @@
 ActiveRecord::Schema.define(:version => 20121114200055) do
 
   create_table "api_keys", :force => true do |t|
-    t.text     "name"
-    t.text     "api_key"
+    t.string     "name"
+    t.string     "api_key"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "deployment_configurations", :force => true do |t|
     t.string   "tag_prefix"
-    t.text     "deployment_profile_id"
-    t.text     "git_repo_name"
-    t.text     "git_org"
-    t.text     "rightscale_array_id"
-    t.text     "rightscale_account_id"
+    t.string     "deployment_profile_id"
+    t.string     "git_repo_name"
+    t.string     "git_org"
+    t.string     "rightscale_array_id"
+    t.string     "rightscale_account_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   create_table "deployments", :force => true do |t|
-    t.integer  "deployment_profile_id"
-    t.text     "sha"
+    t.string  "deployment_profile_id"
+    t.string     "sha"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end

@@ -3,5 +3,7 @@ class Deployment < ActiveRecord::Base
 
   has_one :deployment_configuration
 
+  validates :deployment_profile_id, :presence => true
+  validates :sha, :presence => true
 
 end

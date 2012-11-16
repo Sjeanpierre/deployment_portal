@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116190913) do
+ActiveRecord::Schema.define(:version => 20121116200217) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "name"
@@ -32,21 +32,11 @@ ActiveRecord::Schema.define(:version => 20121116190913) do
   end
 
   create_table "deployments", :force => true do |t|
-    t.string   "deployment_profile_id"
     t.string   "sha"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "tag"
-  end
-
-  create_table "tags", :force => true do |t|
-    t.string   "organization"
-    t.string   "repository"
-    t.string   "sha"
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "deployment_configuration_id"
   end
 
 end

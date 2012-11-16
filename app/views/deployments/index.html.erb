@@ -15,7 +15,6 @@
     <td><%= deployment.deployment_profile_id %></td>
     <td><%= deployment.sha %></td>
     <td><%= deployment.created_at %></td>
-    <td><%= link_to 'Show', deployment %></td>
     <td><%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -24,5 +23,3 @@
 <%= link_to 'Back', "home/index" %>
 
 <br />
-
-<%= link_to 'New Deployment', new_deployment_path %>

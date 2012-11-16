@@ -25,7 +25,8 @@ class DeploymentsController < ApplicationController
   # GET /deployments/new.json
   def new
     @deployment = Deployment.new
-    @deployment.deployment_profile_id = params[:id]
+    @deployment.deployment_profile_id = params[:format]
+    @deployment_profile_id = params[:format]
 
     #respond_to do |format|
     #  format.html # new.html.erb

@@ -11,31 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114200055) do
+ActiveRecord::Schema.define(:version => 20121116190913) do
 
   create_table "api_keys", :force => true do |t|
-    t.string     "name"
-    t.string     "api_key"
+    t.string   "name"
+    t.string   "api_key"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "deployment_configurations", :force => true do |t|
     t.string   "tag_prefix"
-    t.string     "deployment_profile_id"
-    t.string     "git_repo_name"
-    t.string     "git_org"
-    t.string     "rightscale_array_id"
-    t.string     "rightscale_account_id"
+    t.string   "deployment_profile_id"
+    t.string   "git_repo_name"
+    t.string   "git_org"
+    t.string   "rightscale_array_id"
+    t.string   "rightscale_account_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   create_table "deployments", :force => true do |t|
-    t.string  "deployment_profile_id"
-    t.string     "sha"
+    t.string   "deployment_profile_id"
+    t.string   "sha"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "tag"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "organization"
+    t.string   "repository"
+    t.string   "sha"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

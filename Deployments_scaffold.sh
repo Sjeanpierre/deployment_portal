@@ -1,1 +1,1 @@
-rails generate scaffold Deployments deployment_profile_id:integer sha:string created_at:timestamp
+rails generate scaffold Deployments deployment_profile_id:string sha:string created_at:timestamp

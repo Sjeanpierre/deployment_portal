@@ -1,3 +1,7 @@
+require 'rubygems'
+require 'yaml'
+load 'config/rs_api_setup.rb'
+
 class DeploymentsController < ApplicationController
   # GET /deployments
   # GET /deployments.json
@@ -25,18 +29,17 @@ class DeploymentsController < ApplicationController
   # GET /deployments/new.json
   def new
     @deployment = Deployment.new
-    @deployment.deployment_profile_id = params[:format]
-    @deployment_profile_id = params[:format]
-
-    #respond_to do |format|
-    #  format.html # new.html.erb
-    #  format.json { render json: @deployment }
-    #end
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @api_key }
+    end
   end
 
   # GET /deployments/1/edit
   def edit
-    @deployment = Deployment.find(params[:id])
+    @deployment_configuration = DeploymentConfiguration.find(params[:id])
+    @deployment = Deployment.new
+    @deployment.deployment_profile_id = @deployment_configuration.deployment_profile_id
   end
 
   # POST /deployments
@@ -46,7 +49,8 @@ class DeploymentsController < ApplicationController
 
     respond_to do |format|
       if @deployment.save
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
+        #format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
+        format.html { redirect_to @deployment, notice: Dir.pwd.to_s }
         format.json { render json: @deployment, status: :created, location: @deployment }
       else
         format.html { render action: "new" }
@@ -58,6 +62,22 @@ class DeploymentsController < ApplicationController
   # PUT /deployments/1
   # PUT /deployments/1.json
   def update
+    @deployment = Deployment.new
+
+    respond_to do |format|
+      if @deployment.update_attributes(params[:deployment])
+        format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @deployment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /deployments/1
+  # PUT /deployments/1.json
+  def update_old
     @deployment = Deployment.find(params[:id])
 
     respond_to do |format|
@@ -77,9 +97,15 @@ class DeploymentsController < ApplicationController
     @deployment = Deployment.find(params[:id])
     @deployment.destroy
 
+    system('pwd')
+
     respond_to do |format|
       format.html { redirect_to deployments_url }
       format.json { head :no_content }
     end
+  end
+
+  def deploy
+
   end
 end

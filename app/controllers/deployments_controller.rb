@@ -19,7 +19,8 @@ class DeploymentsController < ApplicationController
   # GET /deployments/1.json
   def show
     @deployment = Deployment.find(params[:id])
-
+    @deployment_configuration = DeploymentConfiguration.find(@deployment.deployment_configuration_id)
+    @deployment_profile_id = @deployment_configuration.deployment_profile_id
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @deployment }
@@ -40,8 +41,8 @@ class DeploymentsController < ApplicationController
   def edit
     @deployment_configuration = DeploymentConfiguration.find(params[:id])
     @deployment = Deployment.new
-    @deployment.deployment_profile_id = @deployment_configuration.deployment_profile_id
-
+    @deployment.deployment_configuration_id = params[:id]
+    @deployment_profile_id = @deployment_configuration.deployment_profile_id
   end
 
   # POST /deployments
@@ -49,8 +50,8 @@ class DeploymentsController < ApplicationController
   def create
     @deployment = Deployment.new(params[:deployment])
     @deployment.tag = 'tag9991'
-    #binding.pry
     respond_to do |format|
+      deploy @deployment
       if @deployment.save
         format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
         #format.html { redirect_to @deployment, notice: Dir.pwd.to_s }
@@ -108,7 +109,7 @@ class DeploymentsController < ApplicationController
 
   def deploy(deployment)
     #get deployment_configuration
-    render DeploymentMethods.get_user
+
 
     #get new tag
 

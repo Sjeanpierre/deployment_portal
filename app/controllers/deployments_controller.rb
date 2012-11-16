@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'yaml'
-load 'config/rs_api_setup.rb'
+load 'lib/deployment_methods.rb'
+include DeploymentMethods
 
 class DeploymentsController < ApplicationController
   # GET /deployments
@@ -40,17 +41,19 @@ class DeploymentsController < ApplicationController
     @deployment_configuration = DeploymentConfiguration.find(params[:id])
     @deployment = Deployment.new
     @deployment.deployment_profile_id = @deployment_configuration.deployment_profile_id
+
   end
 
   # POST /deployments
   # POST /deployments.json
   def create
     @deployment = Deployment.new(params[:deployment])
-
+    @deployment.tag = 'tag9991'
+    #binding.pry
     respond_to do |format|
       if @deployment.save
-        #format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
-        format.html { redirect_to @deployment, notice: Dir.pwd.to_s }
+        format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
+        #format.html { redirect_to @deployment, notice: Dir.pwd.to_s }
         format.json { render json: @deployment, status: :created, location: @deployment }
       else
         format.html { render action: "new" }
@@ -63,9 +66,9 @@ class DeploymentsController < ApplicationController
   # PUT /deployments/1.json
   def update
     @deployment = Deployment.new
-
     respond_to do |format|
       if @deployment.update_attributes(params[:deployment])
+        deploy @deployment
         format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -97,15 +100,23 @@ class DeploymentsController < ApplicationController
     @deployment = Deployment.find(params[:id])
     @deployment.destroy
 
-    system('pwd')
-
     respond_to do |format|
       format.html { redirect_to deployments_url }
       format.json { head :no_content }
     end
   end
 
-  def deploy
+  def deploy(deployment)
+    #get deployment_configuration
+    render DeploymentMethods.get_user
+
+    #get new tag
+
+    #tag the repo with the new tag
+
+    #update rightscale inputs
+
+    #launch array instances
 
   end
 end

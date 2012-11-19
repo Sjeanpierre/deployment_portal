@@ -10,6 +10,7 @@ gem "rest-client"
 gem "RightScaleAPIHelper"
 gem "github_api"
 gem "pry"
+gem "pry-nav"
 
 
 # Bundle edge Rails instead:

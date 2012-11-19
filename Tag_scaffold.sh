@@ -1,0 +1,1 @@
+rails generate scaffold Tags organization:string repository:string sha:string name:string email:string created_at:timestamp

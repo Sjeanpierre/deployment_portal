@@ -2,7 +2,7 @@
 
 <p>
   <b>Deployment profile:</b>
-   @<%= @deployment.deployment_profile_id %>
+   @<%= @deployment_profile_id %>
 </p>
 
 <p>
@@ -15,5 +15,9 @@
   <%= @deployment.created_at %>
 </p>
 
+<p>
+  <b>Tag:</b>
+  <%= @deployment.tag %>
+</p>
 
 <%= link_to 'Back', deployments_path %>

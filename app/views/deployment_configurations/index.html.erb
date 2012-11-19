@@ -1,4 +1,4 @@
-<h1>Listing deployment_configurations</h1>
+<h1>Deployment Configurations</h1>
 
 <table>
   <tr>
@@ -17,7 +17,7 @@
 
 <% @deployment_configurations.each do |deployment_configuration| %>
   <tr>
-    <td><%= link_to image_tag("/deploy.png"), new_deployment_path(deployment_configuration.deployment_profile_id) %></td>
+    <td><%= link_to image_tag("/deploy.png"), edit_deployment_path(deployment_configuration) %></td>
     <td><%= deployment_configuration.tag_prefix %></td>
     <td><%= deployment_configuration.deployment_profile_id %></td>
     <td><%= deployment_configuration.git_repo_name %></td>

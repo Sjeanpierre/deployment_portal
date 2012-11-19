@@ -1,8 +1,9 @@
-<h1>Listing deployments</h1>
+<h1>Deployments</h1>
 
 <table>
   <tr>
     <th>Deployment profile</th>
+    <th>Tag</th>
     <th>Sha</th>
     <th>Created at</th>
     <th></th>
@@ -13,6 +14,7 @@
 <% @deployments.each do |deployment| %>
   <tr>
     <td><%= deployment.deployment_profile_id %></td>
+    <td><%= deployment.tag %></td>
     <td><%= deployment.sha %></td>
     <td><%= deployment.created_at %></td>
     <td><%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

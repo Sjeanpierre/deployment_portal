@@ -51,7 +51,6 @@ class DeploymentsController < ApplicationController
     @deployment = Deployment.new(params[:deployment])
     begin
       deploy @deployment
-      binding.pry
       respond_to do |format|
         if @deployment.save
           format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
@@ -105,17 +104,9 @@ class DeploymentsController < ApplicationController
     #get deployment_configuration
     @deployment_configuration = DeploymentConfiguration.find(deployment.deployment_configuration_id)
 
-    #the git_org exists?
-
-
-    #git_hub_repo exists?
-
     DeploymentMethods.github_operations(@deployment_configuration, deployment)
 
-    #rightscale account exists?
-
     DeploymentMethods.rightscale_operations(@deployment_configuration, deployment)
-
 
   end
 end

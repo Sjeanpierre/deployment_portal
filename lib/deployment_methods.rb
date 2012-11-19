@@ -7,9 +7,9 @@ require "github_api"
 module DeploymentMethods
 
   APP_CONFIG = YAML.load_file("config/config.yml")
-  $rs_username          = APP_CONFIG['username']
-  $rs_password          = APP_CONFIG['password']
-  $rs_account_id        = APP_CONFIG['account_id']
+  $rs_username          = APP_CONFIG['rightscale_username']
+  $rs_password          = APP_CONFIG['rightscale_password']
+  $rs_account_id        = APP_CONFIG['rightscale_account_id']
   $github_oauth         = APP_CONFIG['github_oauth']
 
   def git
@@ -47,6 +47,7 @@ module DeploymentMethods
     tag_list.sort!{|x,y| y <=> x }
 
     # get highest tag value and increment by 1
+    tag_list.push(0) if tag_list.empty?
     @prefix + tag_list[0].next.to_s
 
   end

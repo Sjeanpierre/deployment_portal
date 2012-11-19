@@ -7,9 +7,9 @@ class Deployment < ActiveRecord::Base
   validates :deployment_configuration_id, :presence => true
   validates :sha, :presence => true
 
-  def deployment_profile_id=(deployment_configuration_id)
+  def deployment_profile_id
     @deployment_configuration = DeploymentConfiguration.find(deployment_configuration_id)
-    self.deployment_profile_id = @deployment_configuration.deployment_profile_id
+    deployment_profile_id = @deployment_configuration.deployment_profile_id
   end
 
 end

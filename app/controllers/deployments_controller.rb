@@ -39,8 +39,8 @@ class DeploymentsController < ApplicationController
 
   # GET /deployments/1/edit
   def edit
-    @deployment_configuration = DeploymentConfiguration.find(params[:id])
     @deployment = Deployment.new
+    @deployment_configuration = DeploymentConfiguration.find(params[:id])
     @deployment.deployment_configuration_id = params[:id]
     @deployment_profile_id = @deployment_configuration.deployment_profile_id
   end
@@ -49,17 +49,22 @@ class DeploymentsController < ApplicationController
   # POST /deployments.json
   def create
     @deployment = Deployment.new(params[:deployment])
-    @deployment.tag = 'tag9991'
-    respond_to do |format|
+    begin
       deploy @deployment
-      if @deployment.save
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
-        #format.html { redirect_to @deployment, notice: Dir.pwd.to_s }
-        format.json { render json: @deployment, status: :created, location: @deployment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @deployment.errors, status: :unprocessable_entity }
+      binding.pry
+      respond_to do |format|
+        if @deployment.save
+          format.html { redirect_to @deployment, notice: 'Deployment was successfully created.' }
+          #format.html { redirect_to @deployment, notice: Dir.pwd.to_s }
+          format.json { render json: @deployment, status: :created, location: @deployment }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @deployment.errors, status: :unprocessable_entity }
+        end
       end
+    rescue
+      flash[:notice] = "The SHA you used was not found"
+      redirect_to :back
     end
   end
 
@@ -67,31 +72,20 @@ class DeploymentsController < ApplicationController
   # PUT /deployments/1.json
   def update
     @deployment = Deployment.new
-    respond_to do |format|
-      if @deployment.update_attributes(params[:deployment])
-        deploy @deployment
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @deployment.errors, status: :unprocessable_entity }
+    begin
+      deploy @deployment
+      respond_to do |format|
+        if @deployment.update_attributes(params[:deployment])
+          format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @deployment.errors, status: :unprocessable_entity }
+        end
       end
-    end
-  end
-
-  # PUT /deployments/1
-  # PUT /deployments/1.json
-  def update_old
-    @deployment = Deployment.find(params[:id])
-
-    respond_to do |format|
-      if @deployment.update_attributes(params[:deployment])
-        format.html { redirect_to @deployment, notice: 'Deployment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @deployment.errors, status: :unprocessable_entity }
-      end
+    rescue
+      format.html { render action: "edit" }
+      format.json { render json: @deployment.errors, status: :unprocessable_entity }
     end
   end
 
@@ -109,15 +103,19 @@ class DeploymentsController < ApplicationController
 
   def deploy(deployment)
     #get deployment_configuration
+    @deployment_configuration = DeploymentConfiguration.find(deployment.deployment_configuration_id)
+
+    #the git_org exists?
 
 
-    #get new tag
+    #git_hub_repo exists?
 
-    #tag the repo with the new tag
+    DeploymentMethods.github_operations(@deployment_configuration, deployment)
 
-    #update rightscale inputs
+    #rightscale account exists?
 
-    #launch array instances
+    DeploymentMethods.rightscale_operations(@deployment_configuration, deployment)
+
 
   end
 end

@@ -15,3 +15,4 @@
 /tmp
 *.xml
 /config/config.yml
+*.yml

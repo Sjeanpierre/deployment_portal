@@ -1,4 +1,7 @@
 DeploymentPortal::Application.routes.draw do
+  resources :notifications
+
+
   resources :api_keys
 
 

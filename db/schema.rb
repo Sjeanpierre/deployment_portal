@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116200217) do
+ActiveRecord::Schema.define(:version => 20121120153631) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "name"
@@ -31,12 +31,23 @@ ActiveRecord::Schema.define(:version => 20121116200217) do
     t.datetime "updated_at",            :null => false
   end
 
+  create_table "deployment_configurations_notifications", :id => false, :force => true do |t|
+    t.integer "deployment_configuration_id"
+    t.integer "notification_id"
+  end
+
   create_table "deployments", :force => true do |t|
     t.string   "sha"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.string   "tag"
     t.integer  "deployment_configuration_id"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

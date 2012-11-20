@@ -17,6 +17,7 @@
     <td><%= deployment.tag %></td>
     <td><%= deployment.sha %></td>
     <td><%= deployment.created_at %></td>
+    <td><%= link_to 'Show', deployment %></td>
     <td><%= link_to 'Destroy', deployment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:Sage/fudge.git
+  revision: 6831e560f5a1c793993990da4f6e86f7847daa35
+  specs:
+    fudge (0.0.3)
+      activesupport
+      rainbow
+      thor
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,6 +49,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     daemons (1.1.9)
+    diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -83,8 +93,6 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
-    pry-nav (0.2.2)
-      pry (~> 0.9.10)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -109,11 +117,23 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+    rainbow (1.1.4)
     rake (10.0.2)
     rdoc (3.12)
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rspec-core (2.12.0)
+    rspec-expectations (2.12.0)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.0)
+    rspec-rails (2.12.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     sass (3.2.3)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -151,13 +171,14 @@ PLATFORMS
 DEPENDENCIES
   RightScaleAPIHelper
   coffee-rails (~> 3.2.1)
+  fudge!
   github_api
   jquery-rails
   json
   pry
-  pry-nav
   rails (= 3.2.9)
   rest-client
+  rspec-rails
   sass-rails (~> 3.2.3)
   sequel
   sinatra

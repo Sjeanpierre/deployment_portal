@@ -9,9 +9,12 @@ gem "sqlite3"
 gem "rest-client"
 gem "RightScaleAPIHelper"
 gem "github_api"
-gem "pry"
-gem "pry-nav"
 
+group :development, :test do
+  gem "pry"
+  gem 'fudge', :git => 'git@github.com:Sage/fudge.git'
+  gem 'rspec-rails'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

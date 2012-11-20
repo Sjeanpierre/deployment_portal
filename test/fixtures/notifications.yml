@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  deployment_configuration: 
-  email: MyString
+  name: 'Roy Gunter'
+  email: 'roy.gunter@sage.com'
 
 two:
-  deployment_configuration: 
-  email: MyString
+  name: 'Kevin Foster'
+  email: 'kevin.foster@sage.com'

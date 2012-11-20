@@ -49,6 +49,7 @@ class DeploymentsController < ApplicationController
   # POST /deployments.json
   def create
     @deployment = Deployment.new(params[:deployment])
+
     begin
       deploy @deployment
       respond_to do |format|

@@ -14,6 +14,10 @@ class DeploymentConfigurationsController < ApplicationController
   # GET /deployment_configurations/1.json
   def show
     @deployment_configuration = DeploymentConfiguration.find(params[:id])
+    @email_list = Notification.find(:all,
+                      :conditions => ["deployment_configuration_id = ?", params[:id]],
+                      :joins => [:deployment_configurations],
+                      :select => 'DISTINCT notifications.*')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +44,9 @@ class DeploymentConfigurationsController < ApplicationController
   # POST /deployment_configurations
   # POST /deployment_configurations.json
   def create
+    #binding.pry
     @deployment_configuration = DeploymentConfiguration.new(params[:deployment_configuration])
+
 
     respond_to do |format|
       if @deployment_configuration.save

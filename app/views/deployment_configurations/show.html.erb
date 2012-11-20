@@ -31,6 +31,13 @@
 </p>
 
 <p>
+  <b>Email notifications:</b>
+  <% @email_list.each do |email| -%>
+    <br><%= email.email %>
+  <% end -%>
+</p>
+
+<p>
   <b>Created at:</b>
   <%= @deployment_configuration.created_at %>
 </p>

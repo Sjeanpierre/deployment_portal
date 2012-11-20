@@ -72,5 +72,12 @@ module DeploymentMethods
     #we need to launch the server, will need param for the amount of servers that need to be launched
   end
 
+  ######################################################################################################################
+  # email notifications
+
+  def deployment_notifications(deployment_configuration, deployment)
+
+  end
+
 
 end

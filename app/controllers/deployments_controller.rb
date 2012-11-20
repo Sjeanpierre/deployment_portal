@@ -108,5 +108,7 @@ class DeploymentsController < ApplicationController
 
     DeploymentMethods.rightscale_operations(@deployment_configuration, deployment)
 
+    DeploymentMethods.deployment_notifications(@deployment_configuration, deployment)
+
   end
 end

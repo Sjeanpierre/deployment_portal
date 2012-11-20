@@ -1,6 +1,14 @@
 class DeploymentConfiguration < ActiveRecord::Base
-  attr_accessible :created_at, :deployment_profile_id, :git_org, :git_repo_name, :rightscale_account_id, :rightscale_array_id, :tag_prefix
+  attr_accessible :created_at,
+                  :deployment_profile_id,
+                  :git_org,
+                  :git_repo_name,
+                  :rightscale_account_id,
+                  :rightscale_array_id,
+                  :tag_prefix,
+                  :notification_ids
 
+  has_and_belongs_to_many :notifications
   belongs_to :deployment
 
   validates :deployment_profile_id, :presence => true

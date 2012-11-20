@@ -36,6 +36,9 @@
     <%= f.text_field :rightscale_account_id %>
   </div>
   <div class="field">
+    <%= f.select :notification_ids, Notification.all.collect {|x| [x.email, x.id]}, {}, :multiple => true %>
+  </div>
+  <div class="field">
     <%= f.label :created_at %><br />
     <%= f.label Time.now.getutc %>
   </div>

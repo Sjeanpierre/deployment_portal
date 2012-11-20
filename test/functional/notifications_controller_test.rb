@@ -18,7 +18,7 @@ class NotificationsControllerTest < ActionController::TestCase
 
   test "should create notification" do
     assert_difference('Notification.count') do
-      post :create, notification: { deployment_configuration: @notification.deployment_configuration, email: @notification.email }
+      post :create, notification: { name: @notification.name, email: @notification.email }
     end
 
     assert_redirected_to notification_path(assigns(:notification))
@@ -35,7 +35,7 @@ class NotificationsControllerTest < ActionController::TestCase
   end
 
   test "should update notification" do
-    put :update, id: @notification, notification: { deployment_configuration: @notification.deployment_configuration, email: @notification.email }
+    put :update, id: @notification, notification: { name: @notification.name, email: @notification.email }
     assert_redirected_to notification_path(assigns(:notification))
   end
 

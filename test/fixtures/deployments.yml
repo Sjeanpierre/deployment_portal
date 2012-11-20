@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  deployment_profile_id: 1
-  sha: MyText
+  deployment_configuration_id: 1
+  sha: 17ea3f76c30b5d9499ab7d2ab5def19a00b693c9
+  tag: tag
+  message: 'message one'
   created_at: 2012-11-14 14:56:49
 
 two:
-  deployment_profile_id: 1
-  sha: MyText
+  deployment_configuration_id: 1
+  sha: 17ea3f76c30b5d9499ab7d2ab5def19a00b693c9
+  tag: tag
+  message: 'message two'
   created_at: 2012-11-14 14:56:49

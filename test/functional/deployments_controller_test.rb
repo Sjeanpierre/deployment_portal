@@ -18,7 +18,9 @@ class DeploymentsControllerTest < ActionController::TestCase
 
   test "should create deployment" do
     assert_difference('Deployment.count') do
-      post :create, deployment: { created_at: @deployment.created_at, deployment_profile_id: @deployment.deployment_profile_id, sha: @deployment.sha }
+      post :create, deployment: { created_at: @deployment.created_at,
+                                  deployment_configuration_id: @deployment.deployment_configuration_id,
+                                  sha: @deployment.sha }
     end
 
     assert_redirected_to deployment_path(assigns(:deployment))
@@ -35,7 +37,12 @@ class DeploymentsControllerTest < ActionController::TestCase
   end
 
   test "should update deployment" do
-    put :update, id: @deployment, deployment: { created_at: @deployment.created_at, deployment_profile_id: @deployment.deployment_profile_id, sha: @deployment.sha }
+    put :update, id: @deployment,
+        deployment: { created_at: @deployment.created_at,
+                      deployment_configuration_id: @deployment.deployment_configuration_id,
+                      tag: @deployment.tag,
+                      message: @deployment.message,
+                      sha: @deployment.sha }
     assert_redirected_to deployment_path(assigns(:deployment))
   end
 

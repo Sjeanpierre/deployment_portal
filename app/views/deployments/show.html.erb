@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Deployment profile:</b>
+  <b>Configuration profile:</b>
    @<%= @deployment_profile_id %>
 </p>
 
@@ -18,6 +18,11 @@
 <p>
   <b>Tag:</b>
   <%= @deployment.tag %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @deployment.message %>
 </p>
 
 <%= link_to 'Deployments List', "/deployments" %>

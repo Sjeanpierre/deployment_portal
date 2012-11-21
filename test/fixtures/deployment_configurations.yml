@@ -1,19 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  tag_prefix: MyString
-  deployment_profile_id: MyText
-  git_repo_name: MyText
-  git_org: MyText
-  rightscale_array_id: MyText
-  rightscale_account_id: MyText
+  id: 1
+  tag_prefix: 'tag'
+  deployment_profile_id: 'profile-1'
+  git_repo_name: 'lauries_movies'
+  git_org: 'roy-gunter'
+  rightscale_array_id: '12345'
+  rightscale_account_id: 'R12345'
   created_at: 2012-11-14 14:48:02
 
 two:
-  tag_prefix: MyString
-  deployment_profile_id: MyText
-  git_repo_name: MyText
-  git_org: MyText
-  rightscale_array_id: MyText
-  rightscale_account_id: MyText
+  id: 2
+  tag_prefix: 'tag'
+  deployment_profile_id: 'profile-2'
+  git_repo_name: 'charts'
+  git_org: 'roy-gunter'
+  rightscale_array_id: '12345'
+  rightscale_account_id: 'R12345'
   created_at: 2012-11-14 14:48:02

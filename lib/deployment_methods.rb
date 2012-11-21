@@ -6,7 +6,7 @@ require "github_api"
 
 module DeploymentMethods
 
-  APP_CONFIG = YAML.load_file("config/config.yml")
+  APP_CONFIG = YAML.load_file("config/config_local.yml")
   $rs_username          = APP_CONFIG['rightscale_username']
   $rs_password          = APP_CONFIG['rightscale_password']
   $rs_account_id        = APP_CONFIG['rightscale_account_id']
@@ -27,7 +27,6 @@ module DeploymentMethods
   def github_operations(deployment_configuration, deployment)
     #Find last highest tag and increment by one. return new tag
     deployment.tag = get_next_tag(deployment_configuration, deployment)
-
     #we need to tag the git repo associated with the sha
     tag_git_repo(deployment_configuration, deployment)
   end
@@ -35,7 +34,6 @@ module DeploymentMethods
   def get_next_tag(deployment_configuration, deployment)
     # get all tags for the repo
     all_tags = git.repos.tags "#{deployment_configuration.git_org}", "#{deployment_configuration.git_repo_name}"
-
     # get only tags with the format "${tag_prefix}.${number}"
     # and assume this is always so
     # TODO add error handling
@@ -49,16 +47,29 @@ module DeploymentMethods
     # get highest tag value and increment by 1
     tag_list.push(0) if tag_list.empty?
     @prefix + tag_list[0].next.to_s
-
   end
 
   def tag_git_repo(deployment_configuration, deployment)
     begin
+      pushed_tag_information = git.git_data.tags.create deployment_configuration.git_org,
+                                                        deployment_configuration.git_repo_name,
+                                                        "tag" =>  deployment.tag,
+                                                        "message" => deployment.message,
+                                                        "type" => "commit",
+                                                        "object" => deployment.sha,
+                                                        "tagger" => {
+                                                            "name" => "Roy Gunter",
+                                                            "email" => "roy.gunter@sage.com",
+                                                            "date" => deployment.created_at
+                                                        }
+
       repo_tag_info = git.git_data.references.create deployment_configuration.git_org,
                                                      deployment_configuration.git_repo_name,
                                                      "ref" => "refs/tags/#{deployment.tag}",
                                                      "sha" =>  "#{deployment.sha}"
+
     rescue
+
       throw :unprocessable_entity
     end
   end

@@ -1,48 +1,44 @@
-<%= form_for(@deployment_configuration) do |f| %>
-  <% if @deployment_configuration.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@deployment_configuration.errors.count, "error") %> prohibited this deployment_configuration from being saved:</h2>
-
-      <ul>
-      <% @deployment_configuration.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @deployment_configuration, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :tag_prefix, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :tag_prefix, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :deployment_profile_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :deployment_profile_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :git_repo_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :git_repo_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :git_org, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :git_org, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :rightscale_array_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rightscale_array_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :rightscale_account_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rightscale_account_id, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :tag_prefix %><br />
-    <%= f.text_field :tag_prefix %>
-  </div>
-  <div class="field">
-    <%= f.label :deployment_profile_id %><br />
-    <%= f.text_field :deployment_profile_id %>
-  </div>
-  <div class="field">
-    <%= f.label :git_repo_name %><br />
-    <%= f.text_field :git_repo_name %>
-  </div>
-  <div class="field">
-    <%= f.label :git_org %><br />
-    <%= f.text_field :git_org %>
-  </div>
-  <div class="field">
-    <%= f.label :rightscale_array_id %><br />
-    <%= f.text_field :rightscale_array_id %>
-  </div>
-  <div class="field">
-    <%= f.label :rightscale_account_id %><br />
-    <%= f.text_field :rightscale_account_id %>
-  </div>
-  <div class="field">
-    <%= f.select :notification_ids, Notification.all.collect {|x| [x.email, x.id]}, {}, :multiple => true %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br />
-    <%= f.label Time.now.getutc %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                deployment_configurations_path, :class => 'btn' %>
   </div>
 <% end %>

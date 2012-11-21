@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Deployment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Configuration profile:</b>
-   @<%= @deployment_profile_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:sha) %>:</strong></dt>
+  <dd><%= @deployment.sha %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tag) %>:</strong></dt>
+  <dd><%= @deployment.tag %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:deployment_configuration_id) %>:</strong></dt>
+  <dd><%= @deployment.deployment_configuration_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @deployment.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:message) %>:</strong></dt>
+  <dd><%= @deployment.message %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @deployment.email %></dd>
+</dl>
 
-<p>
-  <b>Sha:</b>
-  <%= @deployment.sha %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%= @deployment.created_at %>
-</p>
-
-<p>
-  <b>Tag:</b>
-  <%= @deployment.tag %>
-</p>
-
-<p>
-  <b>Message:</b>
-  <%= @deployment.message %>
-</p>
-
-<%= link_to 'Deployments List', "/deployments" %>
-<%= link_to 'Home', "/home/index" %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              deployments_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_deployment_path(@deployment), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              deployment_path(@deployment),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

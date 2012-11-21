@@ -1,35 +1,44 @@
-
-<%= form_for(@deployment) do |f| %>
-  <% if @deployment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@deployment.errors.count, "error") %> prohibited this deployment from being saved:</h2>
-
-      <ul>
-      <% @deployment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @deployment, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :sha, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sha, :class => 'text_field' %>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :deployment_profile_id %><br />
-    <%= @deployment_profile_id  %>
-    <%= f.hidden_field :deployment_configuration_id %>
   </div>
-  <div class="field">
-    <%= f.label :sha %><br />
-    <%= f.text_field :sha %>
+  <div class="control-group">
+    <%= f.label :tag, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :tag, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :message %><br />
-    <%= f.text_area :message %>
+  <div class="control-group">
+    <%= f.label :deployment_configuration_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :deployment_configuration_id, :class => 'number_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :created_at %><br />
-    <%= f.label Time.now.getutc %>
-    <%= f.hidden_field :created_at, :value => Time.now.getutc %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :name, :class => 'text_area' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :message, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :message, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                deployments_path, :class => 'btn' %>
   </div>
 <% end %>

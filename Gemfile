@@ -9,6 +9,7 @@ gem "sqlite3"
 gem "rest-client"
 gem "RightScaleAPIHelper"
 gem "github_api"
+gem "mysql2"
 
 group :development, :test do
   gem "pry"

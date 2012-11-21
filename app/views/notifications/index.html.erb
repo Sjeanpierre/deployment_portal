@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Name</th>
     <th>Email</th>
     <th></th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @notifications.each do |notification| %>
   <tr>
+    <td><%= notification.name %></td>
     <td><%= notification.email %></td>
     <td><%= link_to 'Show', notification %></td>
     <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
@@ -20,5 +22,5 @@
 
 <br />
 
-<%= link_to 'New Notification', new_notification_path %>
+<%= link_to 'New Email', new_notification_path %>
 <%= link_to 'Home', "/home/index" %>
